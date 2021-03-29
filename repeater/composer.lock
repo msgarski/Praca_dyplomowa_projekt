@@ -385,6 +385,7 @@
         },
         {
             "name": "fakerphp/faker",
+<<<<<<< HEAD
             "version": "v1.14.0",
             "source": {
                 "type": "git",
@@ -401,6 +402,22 @@
                 "php": "^7.1 || ^8.0",
                 "psr/container": "^1.0",
                 "symfony/deprecation-contracts": "^2.2"
+=======
+            "version": "v1.13.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FakerPHP/Faker.git",
+                "reference": "ab3f5364d01f2c2c16113442fb987d26e4004913"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/ab3f5364d01f2c2c16113442fb987d26e4004913",
+                "reference": "ab3f5364d01f2c2c16113442fb987d26e4004913",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1 || ^8.0"
+>>>>>>> a74a1cff0a2e3472c07ceef768d5480ccc42e349
             },
             "conflict": {
                 "fzaninotto/faker": "*"
@@ -408,6 +425,7 @@
             "require-dev": {
                 "bamarni/composer-bin-plugin": "^1.4.1",
                 "ext-intl": "*",
+<<<<<<< HEAD
                 "symfony/phpunit-bridge": "^4.4 || ^5.2"
             },
             "suggest": {
@@ -415,6 +433,9 @@
                 "ext-dom": "Required by Faker\\Provider\\HtmlLorem for generating random HTML.",
                 "ext-iconv": "Required by Faker\\Provider\\ru_RU\\Text::realText() for generating real Russian text.",
                 "ext-mbstring": "Required for multibyte Unicode string functionality."
+=======
+                "phpunit/phpunit": "^7.5.20 || ^8.5.8 || ^9.4.2"
+>>>>>>> a74a1cff0a2e3472c07ceef768d5480ccc42e349
             },
             "type": "library",
             "autoload": {
@@ -439,9 +460,15 @@
             ],
             "support": {
                 "issues": "https://github.com/FakerPHP/Faker/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/FakerPHP/Faker/tree/v1.14.0"
             },
             "time": "2021-03-29T08:56:34+00:00"
+=======
+                "source": "https://github.com/FakerPHP/Faker/tree/v1.13.0"
+            },
+            "time": "2020-12-18T16:50:48+00:00"
+>>>>>>> a74a1cff0a2e3472c07ceef768d5480ccc42e349
         },
         {
             "name": "mikey179/vfsstream",
@@ -946,6 +973,7 @@
         },
         {
             "name": "phpunit/php-code-coverage",
+<<<<<<< HEAD
             "version": "9.2.6",
             "source": {
                 "type": "git",
@@ -956,6 +984,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/f6293e1b30a2354e8428e004689671b83871edde",
                 "reference": "f6293e1b30a2354e8428e004689671b83871edde",
+=======
+            "version": "9.2.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
+                "reference": "f3e026641cc91909d421802dd3ac7827ebfd97e1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/f3e026641cc91909d421802dd3ac7827ebfd97e1",
+                "reference": "f3e026641cc91909d421802dd3ac7827ebfd97e1",
+>>>>>>> a74a1cff0a2e3472c07ceef768d5480ccc42e349
                 "shasum": ""
             },
             "require": {
@@ -1011,7 +1051,11 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2.6"
+=======
+                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2.5"
+>>>>>>> a74a1cff0a2e3472c07ceef768d5480ccc42e349
             },
             "funding": [
                 {
@@ -1019,7 +1063,11 @@
                     "type": "github"
                 }
             ],
+<<<<<<< HEAD
             "time": "2021-03-28T07:26:59+00:00"
+=======
+            "time": "2020-11-28T06:44:49+00:00"
+>>>>>>> a74a1cff0a2e3472c07ceef768d5480ccc42e349
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -1366,6 +1414,7 @@
             "time": "2021-03-23T07:16:29+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "psr/container",
             "version": "1.1.1",
             "source": {
@@ -1414,6 +1463,8 @@
             "time": "2021-03-05T17:36:06+00:00"
         },
         {
+=======
+>>>>>>> a74a1cff0a2e3472c07ceef768d5480ccc42e349
             "name": "sebastian/cli-parser",
             "version": "1.0.1",
             "source": {
@@ -2378,6 +2429,7 @@
             "time": "2020-09-28T06:39:44+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "symfony/deprecation-contracts",
             "version": "v2.2.0",
             "source": {
@@ -2445,6 +2497,8 @@
             "time": "2020-09-07T11:33:47+00:00"
         },
         {
+=======
+>>>>>>> a74a1cff0a2e3472c07ceef768d5480ccc42e349
             "name": "symfony/polyfill-ctype",
             "version": "v1.22.1",
             "source": {
