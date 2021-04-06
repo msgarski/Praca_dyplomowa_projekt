@@ -47,11 +47,7 @@ class Database extends Config
 		'compress' => false,
 		'strictOn' => false,
 		'failover' => [],
-<<<<<<< HEAD
-		'port'     => 3306,
-=======
 		'port'     => 3307,
->>>>>>> a74a1cff0a2e3472c07ceef768d5480ccc42e349
 	];
 
 	/**
@@ -77,11 +73,7 @@ class Database extends Config
 		'compress' => false,
 		'strictOn' => false,
 		'failover' => [],
-<<<<<<< HEAD
-		'port'     => 3306,
-=======
 		'port'     => 3307,
->>>>>>> a74a1cff0a2e3472c07ceef768d5480ccc42e349
 	];
 
 	//--------------------------------------------------------------------
