@@ -12,6 +12,25 @@ class Signup extends BaseController
 
     public function create()
     {
-        echo "po zatwierdzeniu danych formularza nowego usera";
+        $user = new \App\Entities\UserEntity($this->request->getPost());
+
+        $model = new \App\Models\UsersTableModel;
+
+        if ($model->insert($user)) {
+        
+            return redirect()->to("/signup/success");
+            
+        } else {
+            
+            return redirect()->back()
+                             ->with('errors', $model->errors())
+                             ->with('warning', 'Nieprawidłowe dane')
+                             ->withInput();
+        }
+    }
+
+    public function success()
+    {
+		return view('Signup/success');
     }
 }

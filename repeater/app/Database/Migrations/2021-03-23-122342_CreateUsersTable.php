@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
 					'type'           => 'VARCHAR',
 					'constraint'	 => '255',
 			],
-			'password' => [
+			'password_hashed' => [
 					'type'           => 'VARCHAR',
 					'constraint'	 => '255',
 			],
