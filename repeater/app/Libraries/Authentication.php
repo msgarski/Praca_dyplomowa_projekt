@@ -6,17 +6,23 @@ class Authentication
 {
     public function loginAuthentication($email, $password)
     {
-        $model = new \App\Models\UsersTableModel;
-
+        $model = service('userModel');
+        //$model = new \App\Models\UsersTableModel;
         $user = $model->where('email', $email)
                     ->first();
-
+        //dd($user);
+        
         if($user === null)
         {
             return false;
         }
 
         if( ! password_verify($password, $user->password_hashed))
+        {
+            return false;
+        }
+
+        if( ! $user->is_active)
         {
             return false;
         }
@@ -35,7 +41,7 @@ class Authentication
             return null;
         }
 
-        $model = new \App\Models\UsersTableModel;
+        $model = service('userModel');
 
         return $model->find(session()->get('user_id'));
     }

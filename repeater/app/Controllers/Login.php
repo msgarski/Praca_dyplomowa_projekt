@@ -15,8 +15,9 @@ class Login extends BaseController
 
         $password = $this->request->getPost('password');
 
-        $authentic = new \App\Libraries\Authentication;
+        $authentic = service('authentication');
         
+        //dd($authentic->loginAuthentication($email, $password));
 
         if($authentic->loginAuthentication($email, $password))
         {
@@ -38,11 +39,12 @@ class Login extends BaseController
 
     public function exiting()
     {
-        $authentic = new \App\Libraries\Authentication;
+        $authentic = service('authentication');
 
         $authentic->logout();
 
-        return view('Login/logout_view');
+        return redirect()->to('/')
+                        ->with('info', 'Wylogowano');
     }
 }
 

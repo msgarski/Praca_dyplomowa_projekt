@@ -21,5 +21,6 @@
         <button>Log in</button>
 
     </form>
+    <a href=" <?= site_url('/home/index')  ?>"><button>Wyjście</button></a>
 
 <?= $this->endsection() ?>

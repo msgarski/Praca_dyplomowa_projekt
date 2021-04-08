@@ -4,7 +4,7 @@ if(!function_exists('current_user'))
 {
     function current_user()
     {
-        $authentic = new \App\Libraries\Authentication;
+        $authentic = service('authentication');
 
         return $authentic->getCurrentUser();
 

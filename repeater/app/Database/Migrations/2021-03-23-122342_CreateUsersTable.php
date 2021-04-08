@@ -38,6 +38,21 @@ class CreateUsersTable extends Migration
 					'null'     => true,
 					'default'  => null
 			],
+			'activation_hash'	=> [
+					'type'			=>	'VARCHAR',
+					'constraint'	=> 	64,
+					'unique'		=>	true
+			],
+			'is_active'			=> [
+					'type'			=>	'BOOLEAN',
+					'null'			=>	false,
+					'default'		=>	false
+			],
+			'is_admin'			=>	[
+					'type'			=>	'TINYINT',
+					'constraint'	=>	1,
+					'default'		=>	0
+			]
 	];
 
 	$this->forge->addField($fields);
