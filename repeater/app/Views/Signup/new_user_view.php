@@ -1,4 +1,4 @@
-<?= $this->extend('layouts/login') ?>
+<?= $this->extend('layouts/main') ?>
 
 <?= $this->section('title') ?>Rejestracja<?= $this->endsection() ?>
 
@@ -6,10 +6,14 @@
 
 <h1>Rejestracja</h1>
 
+<?php if (session()->has('errors')): ?>
+    <ul>
+        <?php foreach(session('errors') as $error): ?>
+            <li><?= $error ?></li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif ?>
 
-<!-- signup form: -->
-
-<!-- <form action="app/controllers/signup/create" method="post"> -->
 
 <?= form_open("/signup/create") ?>
 
@@ -39,4 +43,4 @@
 
 <a href=" <?= site_url("/") ?>"><button>Wyjście</button></a>
 
-<?= $this->endsection() ?>
+<?php $this->endsection() ?>

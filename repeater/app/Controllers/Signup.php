@@ -6,8 +6,7 @@ class Signup extends BaseController
 {
     public function newUser()
     {
-        // trzeba przechwycić formularz...
-        return view("Signup/new_user");
+        return view("Signup/new_user_view");
     }
 
     public function create()
@@ -20,8 +19,9 @@ class Signup extends BaseController
         
             return redirect()->to("/signup/success");
             
-        } else {
-            
+        } 
+        else 
+        {
             return redirect()->back()
                              ->with('errors', $model->errors())
                              ->with('warning', 'Nieprawidłowe dane')
@@ -31,6 +31,6 @@ class Signup extends BaseController
 
     public function success()
     {
-		return view('Signup/success');
+		return view('Signup/success_view');
     }
 }

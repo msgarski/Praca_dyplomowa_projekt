@@ -1,4 +1,4 @@
-<?= $this->extend('layouts/login') ?>
+<?= $this->extend('layouts/main') ?>
 
 <?= $this->section('title') ?>Rejestracja<?= $this->endSection() ?>
 

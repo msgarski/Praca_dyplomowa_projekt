@@ -19,6 +19,26 @@ class UsersTableModel extends \CodeIgniter\Model
         'password_confirmation' =>  'required|matches[password]'
     ];
 
+    protected $validationMessages = [
+        'name'  => [
+                    'required'      => 'Imię jest wymagane'
+        ],
+        'email' => [
+                    'required'      => 'Adres e-mail jest wymagany',
+                    'is_unique'     => 'Istnieje już konto dla podanego adresu',
+                    'valid_email'   => 'Nieprawidłlowy format adresu email'
+        ],
+        'password' => [
+                    'required'      => 'Wymagane jest podanie hasła',
+                    'min_length[6]' => 'Hasło powinno mieć długość min 6 znaków'
+        ],
+        'password_confirmation'     => [
+                    'required'      => 'Potwierdź hasło',
+                    'matches'       => 'Wprowadzone hasła nie są identyczne',
+                    'min_length[6]' => 'Długość hasło to min 6 znaków'
+        ]
+    ];
+
     protected $beforeInsert = ['hashPassword'];
 
     protected function hashPassword(array $data)
