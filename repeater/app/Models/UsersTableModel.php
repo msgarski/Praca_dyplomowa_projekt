@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use App\Libraries\Token;
+
 class UsersTableModel extends \CodeIgniter\Model
 {
     protected $table = 'user';
 
     protected $allowedFields = ['name', 'email', 'password', 'activation_hash'];
 
+    // tutaj okreslam klasę odpowiedzialną za tworzenie obiektu user:
     protected $returnType = 'App\Entities\UserEntity';
 
     protected $useTimestamps = true;
@@ -54,7 +57,9 @@ class UsersTableModel extends \CodeIgniter\Model
 
     public function activateByToken($token)
     {
-        $token_hash = hash_hmac('sha256', $token, $_ENV['HASH_SECRET_KEY']);
+        $token = new Token($token);
+        
+        $token_hash = $token->getHashValue();
 
         $user = $this->where('activation_hash', $token_hash)
                     ->first();

@@ -4,7 +4,7 @@ namespace App\Libraries;
 
 class Authentication
 {
-    public function loginAuthentication($email, $password)
+    public function loginAuthentication($email, $password = null)
     {
         $model = service('userModel');
         //$model = new \App\Models\UsersTableModel;
@@ -12,24 +12,22 @@ class Authentication
                     ->first();
         //dd($user);
         
-        if($user === null)
+        if(($user === null)||( ! $user->is_active))
         {
             return false;
         }
 
-        if( ! password_verify($password, $user->password_hashed))
+        if($password !== null)
         {
-            return false;
-        }
+            if( ! password_verify($password, $user->password_hashed))
+            {
+                return false;
+            }
 
-        if( ! $user->is_active)
-        {
-            return false;
+            $session = session();
+            $session->regenerate();
+            $session->set('user_id', $user->id);
         }
-
-        $session = session();
-        $session->regenerate();
-        $session->set('user_id', $user->id);
 
         return true;
     }

@@ -21,6 +21,11 @@
         <button>Log in</button>
 
     </form>
+
+    <div>
+        <a href=" <?= site_url('/password/forgot')  ?>">Zapomniane hasło</a>
+    </div>
+
     <a href=" <?= site_url('/home/index')  ?>"><button>Wyjście</button></a>
 
 <?= $this->endsection() ?>

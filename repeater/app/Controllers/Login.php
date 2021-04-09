@@ -17,8 +17,6 @@ class Login extends BaseController
 
         $authentic = service('authentication');
         
-        //dd($authentic->loginAuthentication($email, $password));
-
         if($authentic->loginAuthentication($email, $password))
         {
             return redirect()->to('/login/success')
@@ -34,7 +32,7 @@ class Login extends BaseController
 
     public function success()
     {
-        return view('Login/success_view');
+        return view('Porch/porch_view');
     }
 
     public function exiting()
