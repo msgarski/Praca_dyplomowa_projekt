@@ -13,6 +13,8 @@ class Signup extends BaseController
     {
         $user = new \App\Entities\UserEntity($this->request->getPost());
 
+        dd($user);
+
         $model = service('userModel');
 
         $user->activationByCode();

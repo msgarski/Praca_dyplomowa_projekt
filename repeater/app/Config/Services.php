@@ -43,4 +43,9 @@ class Services extends BaseService
 	{
 		return new \App\Models\UsersTableModel;
 	}
+
+	public static function userUser()
+	{
+		return new \App\Entities\UserEntity;
+	}
 }

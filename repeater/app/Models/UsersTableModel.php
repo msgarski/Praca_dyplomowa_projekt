@@ -8,7 +8,13 @@ class UsersTableModel extends \CodeIgniter\Model
 {
     protected $table = 'user';
 
-    protected $allowedFields = ['name', 'email', 'password', 'activation_hash'];
+    protected $allowedFields = ['name',
+                                'email',
+                                'password',
+                                'activation_hash',
+                                'reset_hash',
+                                'reset_expires_at'
+                            ];
 
     // tutaj okreslam klasę odpowiedzialną za tworzenie obiektu user:
     protected $returnType = 'App\Entities\UserEntity';
@@ -44,8 +50,11 @@ class UsersTableModel extends \CodeIgniter\Model
 
     protected $beforeInsert = ['hashPassword'];
 
+    protected $beforeUpdate = ['hashPassword'];
+
     protected function hashPassword(array $data)
     {
+        //dd($data);
         if(isset($data['data']['password']))
         {
             $data['data']['password_hashed'] = password_hash($data['data']['password'], PASSWORD_DEFAULT);
@@ -55,14 +64,22 @@ class UsersTableModel extends \CodeIgniter\Model
         return $data;
     }
 
-    public function activateByToken($token)
+    public function findUserByToken($token)
     {
         $token = new Token($token);
-        
+
         $token_hash = $token->getHashValue();
 
-        $user = $this->where('activation_hash', $token_hash)
+        $user = $this->where('reset_hash', $token_hash)
                     ->first();
+        
+        return $user;
+    }
+
+    public function activateByToken($token)
+    {
+        // todo: poniższa konsolidacja do sprawdzenia:
+        $user = $this->findUserByToken($token);
 
         if($user !== null)
         {
@@ -72,5 +89,31 @@ class UsersTableModel extends \CodeIgniter\Model
                     ->save($user);
         }
 
+    }
+
+    public function checkTokenForResetPass($token)
+    {
+        $user = $this->findUserByToken($token);
+
+        if($user && ($user->reset_expires_at > date('Y-m-d H:i:s', time())))
+        {
+            // $data = ['password_hashed'   =>  '1234'];
+            // $this->protect(false)
+            //         ->update($user->id, $data);
+            return $user;
+        }
+        else
+        {
+            return $user;
+        }   
+
+        
+    }
+
+    public function getUserByEmail($email)
+    {
+        $user = $this->where('email', $email)
+                        ->first();
+        return $user;
     }
 }

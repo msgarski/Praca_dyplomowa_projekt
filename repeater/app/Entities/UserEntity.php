@@ -11,6 +11,7 @@ class UserEntity extends \CodeIgniter\Entity
         $token = new Token;
 
         $this->token = $token->getValue();
+
         $this->activation_hash = $token->getHashValue();
     }
 
@@ -21,5 +22,16 @@ class UserEntity extends \CodeIgniter\Entity
         // ! tu się wykrzacza: po odkomentowaniu, gryzie się z rekordami
         // ! które mają wartość null w polu activation_hash w tabeli user
         //$this->activation_hash = null;
+    }
+
+    public function resetPassword()
+    {
+        $token = new Token;
+
+        $this->reset_token = $token->getValue();
+
+        $this->reset_hash = $token->getHashValue();
+
+        $this->reset_expires_at = date('Y-m-d H:i:s', time()+3600);
     }
 }

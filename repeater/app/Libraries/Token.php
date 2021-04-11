@@ -25,9 +25,6 @@ class Token
 
     public function getHashValue()
     {
-        //return $this->activation_hash = hash_hmac('sha256', $this->token, $_ENV['HASH_SECRET_KEY']);
-
         return hash_hmac('sha256', $this->token, $_ENV['HASH_SECRET_KEY']);
-
     }
 }
