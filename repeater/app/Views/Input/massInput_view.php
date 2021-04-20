@@ -10,9 +10,8 @@
 <?= form_open("/masscardinput/reachCards") ?>
 <div>
     <label for="cardsInput"></label>
-    <textarea rows="10" cols="100" name="cardsInput" id="cardsInput">
-    Jakiś tekst domyślny...
-    </textarea>
+    <textarea rows="10" cols="100" name="cardsInput" id="cardsInput" 
+    placeholder=" <?= $placeholder ?>"></textarea>
 </div>
 
 <div>

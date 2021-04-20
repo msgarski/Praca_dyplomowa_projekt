@@ -6,7 +6,9 @@ class MassCardInput extends BaseController
 {
     public function index()
     {
-        return view('Input/massInput_view');
+        $placeholder = "pytanie odpowiedź [wymowa] [zdanie przykładowe] \n pytanie odpowiedź [wymowa] [zdanie przykładowe]";
+
+        return view('Input/massInput_view', ['placeholder' => $placeholder]);
     }
 
     public function reachCards()
@@ -29,8 +31,6 @@ class MassCardInput extends BaseController
         dd($score);
 
         if ($model->insertBatch($score)) {
-
-            //$this->sendActivationEmail($user);
         
             return redirect()->to("/masscardinput/success");
             

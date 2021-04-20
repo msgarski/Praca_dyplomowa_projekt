@@ -4,6 +4,7 @@ namespace App\Models;
 
 //use App\Libraries\Token;
 
+
 class CardTableModel extends \CodeIgniter\Model
 {
     protected $table = 'card';
@@ -23,6 +24,12 @@ class CardTableModel extends \CodeIgniter\Model
     //protected $validationRules = [];
 
     protected $validationMessages = [];
+
+    public function amountOfCards()
+    {
+        return $this->select('*')
+                    ->countAllResults();
+    }
 
 
 
