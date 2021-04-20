@@ -48,4 +48,9 @@ class Services extends BaseService
 	{
 		return new \App\Entities\UserEntity;
 	}
+
+	public static function cardModel()
+	{
+		return new \App\Models\CardTableModel;
+	}
 }
