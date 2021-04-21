@@ -32,4 +32,9 @@ class Course extends BaseController
                              ->withInput();
         }
     }
+
+    public function getInsideCourse()
+    {
+        return view('Course/course_view');
+    }
 }

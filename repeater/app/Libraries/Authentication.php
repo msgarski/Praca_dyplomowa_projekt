@@ -7,12 +7,11 @@ class Authentication
     public function loginAuthentication($email, $password = null)
     {
         $model = service('userModel');
-        //$model = new \App\Models\UsersTableModel;
+
         $user = $model->where('email', $email)
                     ->first();
-        //dd($user);
         
-        if(($user === null)||( ! $user->is_active))
+        if(($user === null)||( !$user->is_active))
         {
             return false;
         }
@@ -24,8 +23,10 @@ class Authentication
                 return false;
             }
 
+            // ustanowienie sesji:
             $session = session();
             $session->regenerate();
+            // ustawienie zmiennej sesyjnej 'user_id', żeby było łatwiej później do niej sięgać
             $session->set('user_id', $user->id);
         }
 

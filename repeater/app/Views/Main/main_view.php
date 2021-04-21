@@ -24,9 +24,14 @@
 
 <p>Twoje kursy:</p>
 
-
-
-
-
+<div>
+    <ul>
+        <?php foreach($courses as $course): ?>      
+            <li>
+                <a href=" <?= site_url('/course/getInsideCourse') ?> "><?= esc($course->name)  ?></a>
+            </li> 
+        <?php endforeach; ?>
+    </ul>
+</div>
 
 <?= $this->endsection() ?>

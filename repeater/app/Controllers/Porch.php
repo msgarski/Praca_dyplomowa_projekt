@@ -4,6 +4,13 @@ namespace App\Controllers;
 
 class Porch extends BaseController
 {
+    private $courseModel;
+
+    public function __construct()
+    {
+        $this->courseModel = service('courseModel');
+    }
+
     public function index()
     {
 
@@ -21,6 +28,20 @@ class Porch extends BaseController
 
     public function getInto()
     {
-        return view('Main/main_view');
+        /*
+        *   This method conveys info about user's courses to main view
+        *   
+        */
+        if(session()->has('user_id'))
+        {
+            // $data == all courses found by userId
+            $data = $this->courseModel->getAllCoursesByUserId(session()->get('user_id'));
+
+            return view('Main/main_view', ['courses' => $data]);
+        }
+        else
+        {
+            return null;
+        }
     }
 }

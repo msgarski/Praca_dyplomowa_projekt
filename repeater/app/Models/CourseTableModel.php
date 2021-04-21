@@ -25,5 +25,12 @@ class CourseTableModel extends \CodeIgniter\Model
     protected $validationMessages = [
     ];
 
+    public function getAllCoursesByUserId($userId)
+    {
+        return $this->where('user_id', $userId)
+                        ->findAll();
+
+    }
+
     
 }
