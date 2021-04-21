@@ -53,4 +53,9 @@ class Services extends BaseService
 	{
 		return new \App\Models\CardTableModel;
 	}
+
+	public static function courseModel()
+	{
+		return new \App\Models\CourseTableModel;
+	}
 }

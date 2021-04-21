@@ -32,10 +32,7 @@ class SingleCardInput extends BaseController
         if ($this->model->insert($card)) 
         {
             $data['recent'] = $this->model->amountOfCards();
-
-
-            //dd($data);
-
+            
             return view('Input/singleInput_view', $data);            
         } 
         else 
