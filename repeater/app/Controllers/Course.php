@@ -4,6 +4,12 @@ namespace App\Controllers;
 
 class Course extends BaseController
 {
+    private $courseModel;
+
+    public function __construct()
+    {
+        $this->courseModel = service('courseModel');
+    }
 
     public function newCourse()
     {
@@ -12,29 +18,34 @@ class Course extends BaseController
 
     public function createCourse()
     {
-        $model = service('courseModel');
-
         $user_id = session()->get('user_id');
 
         $course = $this->request->getPost();
 
         $course += ['user_id' => $user_id];
 
-        if ($model->insert($course)) 
-        {            
+        if ($this->courseModel->insert($course)) 
+        {    
+            //!  świeżo po stworzeniu kursu, tu się wykrzacza, bo nie przekazuje listy kursów        
             return view('Main/main_view');            
         } 
         else 
         {
             return redirect()->back()
-                             ->with('errors', $model->errors())
+                             ->with('errors', $this->courseModel->errors())
                              ->with('warning', 'Nieprawidłowe dane')
                              ->withInput();
         }
     }
 
-    public function getInsideCourse()
+    public function getInsideCourse($courseId)
     {
-        return view('Course/course_view');
+        /*
+        *   method for conveying specific course data (found by courseId), 
+        *   to this course view
+        */
+        $data = $this->courseModel->getCourseByCourseId($courseId);
+
+        return view('Course/course_view', ['courseInfo' => $data]);
     }
 }

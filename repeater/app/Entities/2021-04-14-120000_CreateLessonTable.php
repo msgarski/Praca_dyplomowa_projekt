@@ -4,12 +4,10 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateCourseTable extends Migration
+class CreateLessonTable extends Migration
 {
 	public function up()
 	{
-
-        //todo dodatkowe pola, związane z opcjami, dodam póżniej
 		$fields = [
 			'id'          => [
 					'type'           => 'INT',
@@ -17,7 +15,7 @@ class CreateCourseTable extends Migration
 					'unsigned'       => true,
 					'auto_increment' => true
 			],
-            'user_id'          => [
+            'course_id'          => [
                     'type'          => 'INT',
                     'constraint'    => 7,
                     'unsigned'      => true
@@ -32,18 +30,6 @@ class CreateCourseTable extends Migration
                     'constraint'     => '200',
                     'unique'         => false,
 			],
-			'genre_id' => [
-					'type'           => 'VARCHAR',
-					'constraint'	=>	'10',
-                    'default'       =>  'Publiczny',
-                    'null'          => false
-			],
-            'code'  =>  [
-                    'type'          =>  'VARCHAR',
-                    'constraint'    =>  8,
-                    'unique'        =>  false,
-                    'default'       =>  null
-            ],
 			'created_at'      => [
 					'type'     => 'DATETIME',
 					'null'     => true,
@@ -58,13 +44,13 @@ class CreateCourseTable extends Migration
 
 	$this->forge->addField($fields);
 	$this->forge->addKey('id', true);
-    $this->forge->addForeignKey('user_id', 'user', 'id', 'CASCADE', 'CASCADE');
+    //$this->forge->addForeignKey('user_id', 'user', 'id', 'CASCADE', 'CASCADE');
 	$this->forge->createTable('course', true);
 	}
 
 	public function down()
 	{
-        $this->forge->dropForeignKey('course', 'course_user_id_foreign');
+        //$this->forge->dropForeignKey('course', 'course_user_id_foreign');
 		$this->forge->dropTable('course');
 	}
 }

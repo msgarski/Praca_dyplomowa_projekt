@@ -29,7 +29,12 @@ class CourseTableModel extends \CodeIgniter\Model
     {
         return $this->where('user_id', $userId)
                         ->findAll();
+    }
 
+    public function getCourseByCourseId($courseId)
+    {
+        return $this->where('id', $courseId)
+                    ->first();
     }
 
     

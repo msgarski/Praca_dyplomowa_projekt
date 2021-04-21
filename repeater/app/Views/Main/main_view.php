@@ -28,7 +28,7 @@
     <ul>
         <?php foreach($courses as $course): ?>      
             <li>
-                <a href=" <?= site_url('/course/getInsideCourse') ?> "><?= esc($course->name)  ?></a>
+                <a href=" <?= site_url('/course/getInsideCourse').'/'.$course->id ?> "><?= esc($course->name)  ?></a>
             </li> 
         <?php endforeach; ?>
     </ul>

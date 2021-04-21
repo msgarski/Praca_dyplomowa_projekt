@@ -6,10 +6,10 @@
 
 <h1>Widok kursu</h1>
 
-
 <a href=" <?= site_url('/login/exiting')  ?>">Wyloguj</a>
 
 <div>
+    <a href=" <?= site_url('/lesson/index') ?>">Dodaj nową lekcję</a>
     
 </div>
 
