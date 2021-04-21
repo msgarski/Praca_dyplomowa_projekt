@@ -44,13 +44,13 @@ class CreateLessonTable extends Migration
 
 	$this->forge->addField($fields);
 	$this->forge->addKey('id', true);
-    //$this->forge->addForeignKey('user_id', 'user', 'id', 'CASCADE', 'CASCADE');
-	$this->forge->createTable('course', true);
+    $this->forge->addForeignKey('course_id', 'course', 'id', 'CASCADE', 'CASCADE');
+	$this->forge->createTable('lesson', true);
 	}
 
 	public function down()
 	{
-        //$this->forge->dropForeignKey('course', 'course_user_id_foreign');
-		$this->forge->dropTable('course');
+        $this->forge->dropForeignKey('lesson', 'lesson_course_id_foreign');
+		$this->forge->dropTable('lesson');
 	}
 }

@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Controllers\Porch;
 class Course extends BaseController
 {
     private $courseModel;
@@ -25,9 +26,12 @@ class Course extends BaseController
         $course += ['user_id' => $user_id];
 
         if ($this->courseModel->insert($course)) 
-        {    
-            //!  świeżo po stworzeniu kursu, tu się wykrzacza, bo nie przekazuje listy kursów        
-            return view('Main/main_view');            
+        {          
+            // tu trzeba wywołać metodę z innego kontrolera
+            // bo muszę wrócić do widoku okna głównego z kursami      
+            $porch = new Porch();
+
+            return $porch->getInto();
         } 
         else 
         {
@@ -44,6 +48,11 @@ class Course extends BaseController
         *   method for conveying specific course data (found by courseId), 
         *   to this course view
         */
+
+        $lessonModel = service('lessonModel');
+
+        //dd($lessonModel->getAllLessonsByCourseId($courseId));
+
         $data = $this->courseModel->getCourseByCourseId($courseId);
 
         return view('Course/course_view', ['courseInfo' => $data]);

@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+
 class Porch extends BaseController
 {
     private $courseModel;
@@ -34,9 +35,8 @@ class Porch extends BaseController
         */
         if(session()->has('user_id'))
         {
-            // $data == all courses found by userId
             $data = $this->courseModel->getAllCoursesByUserId(session()->get('user_id'));
-
+            
             return view('Main/main_view', ['courses' => $data]);
         }
         else

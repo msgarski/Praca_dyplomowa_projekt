@@ -58,4 +58,9 @@ class Services extends BaseService
 	{
 		return new \App\Models\CourseTableModel;
 	}
+
+	public static function lessonModel()
+	{
+		return new \App\Models\LessonTableModel;
+	}
 }
