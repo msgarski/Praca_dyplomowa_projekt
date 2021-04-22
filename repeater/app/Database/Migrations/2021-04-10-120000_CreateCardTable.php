@@ -16,11 +16,6 @@ class CreateCardTable extends Migration
 				'unsigned'      => true,
 				'auto_increment'=> true
 			],
-            'lesson_id'       =>  [
-                'type'          =>  'INT',
-                'constraint'    =>  7,
-                'unsigned'      =>  true,
-            ],
 			'question'       => [
 				'type'       	=> 'VARCHAR',
 				'constraint'	=> '50',

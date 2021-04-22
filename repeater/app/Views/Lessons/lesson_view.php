@@ -24,4 +24,10 @@
 
 <p>Twoje karty w tej lekcji:</p>
 
+
+
+<div>
+    <a href="<?=  site_url('/') ?>">Powrót do kursu</a>
+</div>
+
 <?= $this->endsection() ?>

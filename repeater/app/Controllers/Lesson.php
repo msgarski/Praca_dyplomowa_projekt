@@ -2,7 +2,9 @@
 
 namespace App\Controllers;
 
-use App\Controllers\Porch;
+use App\Controllers\Course;
+use App\Models\CourseTableModel;
+
 class Lesson extends BaseController
 {
     private $lessonModel;
@@ -10,11 +12,6 @@ class Lesson extends BaseController
     public function __construct()
     {
         $this->lessonModel = service('lessonModel');
-    }
-
-    public function index()
-    {// ! funkcja na razie niepotrzebna...
-        //return view('Lessons/newLesson_view');
     }
 
     public function toNewLessonForm($courseId)
@@ -25,15 +22,20 @@ class Lesson extends BaseController
     public function create()
     {
         // $lesson posiada też course_id dla tabeli lesson
+        // jako ukryte pole formularza tworzenia nowej lekcji
         $lesson = $this->request->getPost();
+
+        $courseId = $lesson['course_id'];
 
         if ($this->lessonModel->insert($lesson)) 
         {          
-            // tu trzeba wywołać metodę z innego kontrolera
-            // bo muszę wrócić do widoku okna głównego z kursami      
-            //$porch = new Porch();
+            // po sukcesie insertu, wracamy do widoku kursu
+            // dla którego dodaliśmy lekcję: 
+            // trzeba jednak przekazać course_info, a nie samo course_id 
+            // więc najłatwiej wywołać znaną metodę z klasy Course:
+            $course = new Course(); 
 
-            return $porch->getInto();
+            return $course->getInsideCourse($courseId);
         } 
         else 
         {
@@ -43,6 +45,13 @@ class Lesson extends BaseController
                              ->withInput();
         }
         
+    }
+
+    public function getInsideLesson($lessonId)
+    {
+        $lesson = $this->lessonModel->getLessonByLessonId($lessonId);
+
+        return view('Lessons/lesson_view', ['lessonInfo' => $lesson]);
     }
 
     

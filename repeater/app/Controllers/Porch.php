@@ -36,6 +36,7 @@ class Porch extends BaseController
         if(session()->has('user_id'))
         {
             $data = $this->courseModel->getAllCoursesByUserId(session()->get('user_id'));
+            //dd($data);
             
             return view('Main/main_view', ['courses' => $data]);
         }

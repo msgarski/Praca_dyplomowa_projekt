@@ -48,13 +48,14 @@ class Course extends BaseController
         *   method for conveying specific course data (found by courseId), 
         *   to this course view
         */
-
         $lessonModel = service('lessonModel');
 
-        //dd($lessonModel->getAllLessonsByCourseId($courseId));
+        $courseInfo = $this->courseModel->getCourseByCourseId($courseId);
 
-        $data = $this->courseModel->getCourseByCourseId($courseId);
+        $allLessons = $lessonModel->getAllLessonsByCourseId($courseId);
 
-        return view('Course/course_view', ['courseInfo' => $data]);
+        return view('Course/course_view', ['courseInfo' => $courseInfo,
+                                            'lessons'   => $allLessons
+        ]);
     }
 }

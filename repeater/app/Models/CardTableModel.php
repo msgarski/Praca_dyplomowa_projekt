@@ -13,7 +13,8 @@ class CardTableModel extends \CodeIgniter\Model
                                 'answer',
                                 'sentence',
                                 'image',
-                                'answer_sound'
+                                'answer_sound',
+                                'lesson_id'
                             ];
 
     // tutaj okreslam klasę odpowiedzialną za tworzenie obiektu user:

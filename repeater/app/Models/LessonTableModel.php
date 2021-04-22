@@ -36,5 +36,11 @@ class LessonTableModel extends \CodeIgniter\Model
                     ->findAll();
     }
 
+    public function getLessonByLessonId($lessonId)
+    {
+        return $this->where('id', $lessonId)
+                    ->first();
+    }
+
     
 }
