@@ -15,9 +15,8 @@
     </p>
 </div>
 
-
 <p>Uzupełnij pola:</p>
-<?= form_open("/singlecardinput/createCard") ?>
+<?= form_open("/cards/createCard") ?>
 <div>
     <label for="question">Pytanie</label>
     <input type="text" name="question" id="question" value="">
@@ -40,13 +39,15 @@
     <input type="file" id="image" name="image"  size="300" value=""/>
 </div>
 
+<div>
+        <input type="hidden" name="lesson_id" id="lesson_id" value="<?= $lesson_id ?>">
+</div>
+
 <button>Zapisz</button>
-<a href=" <?= site_url('') // powrót do widoku lekcji ?>">Anuluj</a>
+
+<a href=" <?= site_url('/lesson/getInsideLesson/').$lesson_id// powrót do widoku lekcji ?>">Anuluj</a>
 
 </form>
-
-
-
 
 
 

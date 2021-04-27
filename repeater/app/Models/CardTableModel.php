@@ -32,6 +32,19 @@ class CardTableModel extends \CodeIgniter\Model
                     ->countAllResults();
     }
 
+    public function amountOfUserCards($userId)
+    {
+        return $this->select('*')
+                    ->countAllResults();
+    }
+
+    public function amountOfLessonCards($lessonId)
+    {
+        return $this->where('lesson_id', $lessonId)
+                    ->countAllResults();
+
+    }
+
 
 
 
