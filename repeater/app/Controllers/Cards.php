@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Libraries\MassCardInput;
 
+use App\Libraries\Queries;
+
 
 class Cards extends BaseController
 {
@@ -18,26 +20,34 @@ class Cards extends BaseController
     {
         if(session()->has('user_id'))
         {
-            $placeholder = "pytanie odpowiedź [wymowa] [zdanie przykładowe] \n pytanie odpowiedź [wymowa] [zdanie przykładowe]";
+            $placeholder = "pytanie odpowiedź [wymowa] [zdanie przykładowe] \n";
 
             $userId = session()->get('user_id');
+
+            //! próbne zapytania:
+            $qrs = new Queries;
+            // d($qrs->amountOfUserCards($userId));
+            // dd($qrs->userCardsEntireInfo($userId));
+            // dd($qrs->checkFunction($userId));
+            
+            //! koniec próbnych zapytań
+            
+
 
             $data = [
                 'user_id' => $userId,
                 'lesson_id' => $lessonId,
                 'before' => 0,
-                'recent' => $this->model->amountOfCards()       //! to do zmiany, karty usera!
+                'recent' => $qrs->amountOfUserCards($userId)
             ];
-        
-            if($amount ==1)                                     // single input option
+
+            if($amount == 1)                                     // single input option
             {
                 return view('Input/singleInput_view', $data);
             }
             else                                                // mass input option
             {
-                $data['placeholder'] = $placeholder;
-
-                //dd($data);
+                $data['placeholder'] = $placeholder.$placeholder.$placeholder;
 
                 return view('Input/massInput_view', $data);
             }
@@ -48,6 +58,10 @@ class Cards extends BaseController
 
     public function createCard()
     {
+        /*
+        *   this method gets new card data from form and
+        *   save them as new record in cardTable
+        */
                                                                 // array $card zawiera lesson_id 
         $card = $this->request->getPost();                      // z ukrytego pola formularza:
 
@@ -73,6 +87,11 @@ class Cards extends BaseController
 
     public function createManyCards()
     {
+        /*
+        *   method gets data of multiple cards from textarea
+        *   and save them in cardTable
+        */
+
         $mass = new MassCardInput;                              // create instance of massCardsInput class
 
         $lesson_id = $this->request->getVar('lesson_id');

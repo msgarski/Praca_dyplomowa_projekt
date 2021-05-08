@@ -14,10 +14,16 @@ class CardTableModel extends \CodeIgniter\Model
                                 'sentence',
                                 'image',
                                 'answer_sound',
-                                'lesson_id'
+                                'lesson_id',
+                                'learned_at',
+                                'tries',
+                                'summary',
+                                'fast_repeat',
+                                'awkward',
+                                'overlearning'
                             ];
 
-    // tutaj okreslam klasę odpowiedzialną za tworzenie obiektu user:
+    // tutaj okreslam klasę odpowiedzialną za tworzenie obiektu card:
     protected $returnType = 'App\Entities\CardEntity';
 
     protected $useTimestamps = true;
@@ -27,12 +33,6 @@ class CardTableModel extends \CodeIgniter\Model
     protected $validationMessages = [];
 
     public function amountOfCards()
-    {
-        return $this->select('*')
-                    ->countAllResults();
-    }
-
-    public function amountOfUserCards($userId)
     {
         return $this->select('*')
                     ->countAllResults();
@@ -49,6 +49,25 @@ class CardTableModel extends \CodeIgniter\Model
 
 
 
+    // public function amountOfUserCards1($userId)
+    // {
+    //     return $this->select('card.question')
+    //                 ->from('user')
+    //                 ->join('course', 'course.user_id = user.id')
+    //                 ->join('lesson', 'course.id = lesson.course_id')
+    //                 ->join('card', 'lesson.id = card.lesson_id')
+    //                 ->where('user.id', $userId);
+                    
+    // }
 
-
+    // public function amountOfUserCards($userId)
+    // {
+    //     return $this->select('question')
+    //                 ->join('course', 'course.user_id = user.id')
+    //                 ->join('lesson', 'course.id = lesson.course_id')
+    //                 ->join('card', 'lesson.id = card.lesson_id')
+    //                 ->where('user.id', $userId)
+    //                 ->findAll();
+                    
+    // }
 }

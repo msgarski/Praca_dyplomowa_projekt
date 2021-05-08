@@ -10,7 +10,7 @@ class CreateCardTable extends Migration
 	public function up()
 	{
 		$fields = [
-			'id'          => [
+			'id'          	=> [
 				'type'          => 'INT',
 				'constraint'    => 9,
 				'unsigned'      => true,
@@ -22,7 +22,7 @@ class CreateCardTable extends Migration
 				'null'			=>	true,
 				'unique'     	=> false,
 			],
-			'answer'       => [
+			'answer'		=> [
                 'type'          => 'VARCHAR',
                 'constraint'    => '50',
                 'unique'        => false,
@@ -42,27 +42,56 @@ class CreateCardTable extends Migration
                 'type'          =>  'BLOB',
 				'default'		=>	null,
             ],
-			'answer_sound'		=>	[
+			'answer_sound'	=>	[
 				'type'			=>	'BLOB',
 				'default'		=>	null,
 			],
-			'created_at'      => [
-				'type'     => 'DATETIME',
-				'null'     => true,
-				'default'  => null
+			'learned_at'	=>	[
+				'type'     		=> 'DATETIME',
+				'null'     		=> true,
+				'default'  		=> null
 			],
-			'updated_at'      => [
-				'type'     => 'DATETIME',
-				'null'     => true,
-				'default'  => null
+			'tries'			=>	[
+				'type'          => 'TINYINT',
+				'constraint'    => 2,
+				'unsigned'      => true,
+				'default'		=>	null
+			],
+			'summary'		=>	[
+				'type'			=>	'BOOLEAN',
+				'null'			=>	false,
+				'default'		=>	false
+			],
+			'fast_repeat'	=>	[
+				'type'			=>	'BOOLEAN',
+				'null'			=>	false,
+				'default'		=>	false
+			],
+			'awkward'		=>	[
+				'type'			=>	'BOOLEAN',
+				'null'			=>	false,
+				'default'		=>	false
+			],
+			'overlearning'	=>	[
+				'type'			=>	'BOOLEAN',
+				'null'			=>	false,
+				'default'		=>	false
+			],
+			'created_at'	=> [
+				'type'     		=> 'DATETIME',
+				'null'     		=> true,
+				'default'  		=> null
+			],
+			'updated_at'    => [
+				'type'     		=> 'DATETIME',
+				'null'     		=> true,
+				'default'  		=> null
 			]
 	];
 
         $this->forge->addField($fields);
-		//? A dlaczego nie PrimaryKey?
+
         $this->forge->addKey('id', true);
-		//! klucz obcy na razie nie ma jak dodać:
-		//$forge->addForeignKey('lesson_id','lesson','id');
 
         $this->forge->createTable('card');
 	}

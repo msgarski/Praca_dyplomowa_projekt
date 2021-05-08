@@ -14,6 +14,14 @@
 </div>
 
 <div>
+    <p>
+        Karty do nauki w tym kursie:
+        <a href="<?= site_url('/study/presentation/').$courseInfo->id.'/'.$courseInfo->user_id ?>"><button>Ucz się</button></a>
+    </p>
+    
+</div>
+
+<div>
     Lekcje w tym kursie:
 </div>
 
@@ -33,6 +41,6 @@
     <a href="<?= site_url('/porch/getinto')  ?>">Powrót</a>
 </div>
 
-
+<?=  d($courseInfo) ?>
 
 <?= $this->endsection() ?>

@@ -11,7 +11,7 @@
 <div>
     <label for="cardsInput"></label>
     <textarea rows="10" cols="100" name="cardsInput" id="cardsInput" 
-    placeholder=" <?= $placeholder ?>"></textarea>
+    placeholder="<?= $placeholder ?>"></textarea>
 </div>
 
 <div>
