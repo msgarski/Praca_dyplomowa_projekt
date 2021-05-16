@@ -58,4 +58,11 @@ class Course extends BaseController
                                             'lessons'   => $allLessons
         ]);
     }
+
+
+    public function proba()
+    {
+        $wyn = ['score' => 'robert'];
+        return $this->response->setJSON($wyn);
+    }
 }

@@ -12,6 +12,7 @@ class CardTableModel extends \CodeIgniter\Model
     protected $allowedFields = ['question',
                                 'answer',
                                 'sentence',
+                                'pronounciation',
                                 'image',
                                 'answer_sound',
                                 'lesson_id',

@@ -1,3 +1,4 @@
+<h1>ZROBIONE !!</h1>
 <?= $this->extend("layouts/main") ?>
 
 <?= $this->section("title") ?>Logowanie<?= $this->endsection() ?>

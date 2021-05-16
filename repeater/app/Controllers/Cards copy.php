@@ -60,28 +60,11 @@ class Cards extends BaseController
         *   this method gets new card data from form and
         *   save them as new record in cardTable
         */
-         
-        $card = [
-            'question' => 'gowno',
-            'answer' => '',
-            'pronounciation' => '',
-            'sentence' => '',
-            'image' => null,
-            'lesson_id' => '6'
-        ];
+                                                                // array $card zawiera lesson_id 
+        $card = $this->request->getPost();                      // z ukrytego pola formularza:
 
-        $card['question'] = $this->request->getVar('question');
-        $card['answer'] = $this->request->getVar('answer');
-        $card['pronounciation'] = $this->request->getVar('pronounciation');
-        $card['sentence'] = $this->request->getVar('sentence');
-        //!$card['image'] = $this->request->getVar('image');
-        //$card['lesson_id'] = (int)$this->request->getVar('lesson_id');
-
-        
-        var_dump($card['lesson_id']);
-        //exit; 
         $data = [
-            'before' => $this->model->amountOfCards(), //! jak to przekazać do widoku?
+            'before' => $this->model->amountOfCards(),
             'lesson_id' => $card['lesson_id']
             ];
 
@@ -89,7 +72,7 @@ class Cards extends BaseController
         {
             $data['recent'] = $this->model->amountOfCards();
             
-            //return view('Input/singleInput_view', $data);            
+            return view('Input/singleInput_view', $data);            
         } 
         else 
         {

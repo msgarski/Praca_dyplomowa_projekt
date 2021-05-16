@@ -25,6 +25,8 @@ class Lesson extends BaseController
         // jako ukryte pole formularza tworzenia nowej lekcji
         $lesson = $this->request->getPost();
 
+        d($lesson);
+
         $courseId = $lesson['course_id'];
 
         if ($this->lessonModel->insert($lesson)) 
@@ -36,6 +38,7 @@ class Lesson extends BaseController
             $course = new Course(); 
 
             return $course->getInsideCourse($courseId);
+            //return $this->response->setJSON($wyn);
         } 
         else 
         {
